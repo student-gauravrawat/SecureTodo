@@ -5,7 +5,7 @@ function Started() {
       <div className='my-[60px]'>
             <div className='text-left ml-5.5 '>
                 <p className='text-[70px] font-semibold'>Get Started</p>
-                <p className=' text-[30px] font-light'>Welcome to our platform</p>
+                <p className=' text-[30px] font-light'>Welcome to our platform.</p>
                 <p className=' text-[30px] font-light'>Login or sign up to get started on your journey.</p>
              </div>
 
