@@ -1,5 +1,13 @@
-import Container from "./Container/Container";
+import Container from "./Container";
+import Login from "./Login"
+import SingUp from "./SingUp"
+import Button from "./Button"
+import Input from "./Input"
 
 export {
-  Container,  
+  Container,
+  Login,
+  SingUp, 
+  Input,
+  Button,  
 }
