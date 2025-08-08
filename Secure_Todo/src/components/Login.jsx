@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import{Container, Button, Input, SingUp} from "./index"
+import{Container, Button, Input} from "./index"
+import SingUpPage from '../pages/SingUpPage'
 
 function Login() {
 
  const[active, setActive] = useState("start")
- if(active === 'singup'){
-  return <SingUp/>
+ if(active === 'singupPage'){
+  return <SingUpPage/>
  }
 
   return (
@@ -40,7 +41,7 @@ function Login() {
       <div className='text-left ml-5.5'>
           <div className=' text-[30px] mt-8'>
               Don't have an account?  
-              <button onClick={()=> setActive("singup")}>
+              <button onClick={()=> setActive("singupPage")}>
                   <span className=' hover:underline hover:text-blue-800 ml-1.5'>
                       Sign Up🔗
                   </span>

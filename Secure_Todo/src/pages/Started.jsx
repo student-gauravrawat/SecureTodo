@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import {useNavigate} from "react-router-dom"
-import {Login, SingUp} from "../components/index"
+import LoginPage from "./LoginPage"
+import SingUpPage from './SingUpPage'
 
 function Started() {
     const[activePage, setActivePage] = useState("start")
 
       if(activePage === "login"){
-         return <Login/>
+         return <LoginPage/>
       }
       else if(activePage === "singup"){
-         return <SingUp/>
+         return <SingUpPage/>
       }
     
   return (
