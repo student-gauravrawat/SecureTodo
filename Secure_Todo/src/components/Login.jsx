@@ -1,16 +1,37 @@
 import React, { useState } from 'react'
 import{Container, Button, Input} from "./index"
 import SingUpPage from '../pages/SingUpPage'
+import {useForm} from "react-hook-form"
+import { login as storeLogin} from "../FireBase/auth"
+
+import ProjectPage from '../pages/ProjectPage'
 
 function Login() {
 
- const[active, setActive] = useState("start")
+
+  const{register, handleSubmit}= useForm()
+  const [showLogin, setShowLogin] = useState(false)
+  
+ const[active, setActive] = useState("")
  if(active === 'singupPage'){
   return <SingUpPage/>
  }
 
+  const login = async(data)=>{
+      try {
+        const userData =  await storeLogin(data)
+        console.log("login successful")
+        setShowLogin(true)
+
+      } catch (error) {
+        console.log("error is login", error.message)
+      }
+  }
+
   return (
-    <div className='my-[50px]'>
+    <>
+          { showLogin? (<ProjectPage/>) : (
+     <div className='my-[50px]'>
 
          <div className="text-left ml-5.5">
               <p className='text-[70px] font-semibold'>Login</p>
@@ -19,19 +40,29 @@ function Login() {
 
 
          <Container>
-               <form>
+               <form onSubmit={handleSubmit(login)}>
                     <div>
                         <Input 
                           label="Email"
                           placeholder="Enter your email"
-                          type="text"
+                          type="email"
+                          {
+                            ...register("email", {
+                              required: true
+                            })
+                          }
                         />
                         <Input
                            label="Password"
                            placeholder="Enter your password"
                            type="password"
+                           {
+                            ...register("password",{
+                              required:true
+                            })
+                           }
                         />
-                        <Button>
+                        <Button type="submit">
                             Login
                         </Button>
                     </div>
@@ -50,6 +81,9 @@ function Login() {
       </div>
 
     </div>
+   )}
+</>
+   
   )
 }
 
