@@ -6,9 +6,9 @@ function App() {
 
   return (
     <>
-       {/* <Interface/> */}
-       <Header/>
-       <p>hello</p>
+       <Interface/>
+       {/* <Header/> */}
+      
 
     </>
     

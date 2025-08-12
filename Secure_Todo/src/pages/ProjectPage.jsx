@@ -1,9 +1,10 @@
 import React from 'react'
+import {Header} from "../components/index"
 
 function ProjectPage() {
   return (
     <div>
-       s
+       <Header/>
     </div>
   )
 }
