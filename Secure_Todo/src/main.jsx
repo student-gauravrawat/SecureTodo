@@ -6,18 +6,19 @@ import { Provider } from 'react-redux'
 import store from "./store/store.js"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import {AllTodo, CompletedTodo, UnCompletedTodo, Login} from "../src/components/index.js"
-import Home from './pages/Home.jsx'
+
+import ProjectPage from './pages/ProjectPage.jsx'
 
 
 
 const router = createBrowserRouter([
    {
     path:'/',
-    element:<App/>,
+    element:<ProjectPage/>,
     children:[
            {
                path:'/',
-               element:<Home/>,
+               element:<ProjectPage/>,
                children:[
                            {
                                path:'/completetodo',

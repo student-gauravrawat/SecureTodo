@@ -1,10 +1,12 @@
 import React from 'react'
-import {Header} from "../components/index"
+import Header from "../components/Header/Header"
+import { TodoInput } from '../components'
 
 function ProjectPage() {
   return (
     <div>
        <Header/>
+       
     </div>
   )
 }

@@ -1,52 +1,45 @@
 import React from 'react'
-// import {useNavigate} from "react-router-dom"
 import LogOutBtn from './LogOutBtn'
 import { Link, NavLink } from 'react-router-dom'
 
 function Header() {
  
-  // const navigate = useNavigate()
-
-  //  const navItems = [
-  //   { name: 'Home', slug: "/"},
-  //   { name: "Completed Todos", slug: "/completed" },
-  //   { name: "Uncompleted Todos", slug: "/uncompleted" },
-  // ]
-
 
   return (
     <header>
-        <nav>
-             <div>
-                  <Link to='/'>
-                       <p>Secure ToDo</p>
+        <nav className=' my-10'>
+             <div className='  flex justify-between '>
+                  <Link to='/'
+                   className=' ml-5' 
+                  >
+                       <p className='text-[34px] font-semibold'>Secure ToDo</p>
                   </Link>
 
-                  <ul>
+                  <ul className=' flex items-center justify-center gap-8 '>
                      <NavLink
                       to='/'
-                      className={({isActive})=> isActive? "text-2xl text-red-400 font-bold": ""}
+                      className={({isActive})=> `  font-medium  ${isActive? "text-xl text-red-400 font-bold  ": ""}`}
                      >
                          <li>All Todo</li>
                      </NavLink>
 
                      <NavLink
                        to='/completetodo'
-                       className={({isActive})=> isActive ? "text-2xl text-red-400 font-bold":""}
+                       className={({isActive})=> ` font-medium  ${isActive? "text-xl text-red-400 font-bold": ""}`}
                      >
                       <li>Completed Todo</li>
                      </NavLink>
 
                      <NavLink
                        to='/uncompletetodo'
-                       className={({isActive})=>isActive ? "text-2xl text-red-400 font-bold":""} 
+                       className={({isActive})=> `  font-medium  ${isActive? "text-xl text-red-400 font-bold": ""}`} 
                     >
                          <li>Uncompleted Todo</li>
                      </NavLink>
                   </ul>
 
 
-                  <LogOutBtn>
+                  <LogOutBtn  className=' mr-5'>
                        Log Out
                   </LogOutBtn>
              </div>
