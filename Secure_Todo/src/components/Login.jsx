@@ -9,28 +9,34 @@ import ProjectPage from '../pages/ProjectPage'
 function Login() {
 
 
-  const{register, handleSubmit}= useForm()
-  const [showLogin, setShowLogin] = useState(false)
+  const{register, handleSubmit, reset}= useForm()
+  const [showPage, setShowPage] = useState(false)
+  const[error, setError] = useState(false)
   
- const[active, setActive] = useState("")
- if(active === 'singupPage'){
-  return <SingUpPage/>
- }
+  const[active, setActive] = useState("")
+
+  if(active === 'singupPage'){
+         return <SingUpPage/>
+    }
+  
 
   const login = async(data)=>{
       try {
-        const userData =  await storeLogin(data)
+        await storeLogin(data)
         console.log("login successful")
-        setShowLogin(true)
+        setShowPage(true)
+        
 
       } catch (error) {
         console.log("error is login", error.message)
+        setError(true)
+        reset()
       }
   }
 
   return (
     <>
-          { showLogin? (<ProjectPage/>) : (
+          { showPage? (<ProjectPage/>) : (
      <div className='my-[50px]'>
 
          <div className="text-left ml-5.5">
@@ -62,9 +68,12 @@ function Login() {
                             })
                            }
                         />
-                        <Button type="submit">
+                        <div className=' flex'>
+                           <Button type="submit">
                             Login
-                        </Button>
+                           </Button>
+                           {error? <p className=' text-red-700 font-mono  text-s ml-[150px] '>Please enter your right email and password</p>:""}
+                        </div>
                     </div>
                </form>
          </Container>    

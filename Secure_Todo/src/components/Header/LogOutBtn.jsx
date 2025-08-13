@@ -1,6 +1,5 @@
 import React from 'react'
 import {logout} from "../../FireBase/auth" 
-import {Login} from "../index"
 
 function LogOutBtn({className}) {
     

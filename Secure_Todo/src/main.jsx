@@ -14,7 +14,7 @@ import ProjectPage from './pages/ProjectPage.jsx'
 const router = createBrowserRouter([
    {
     path:'/',
-    element:<ProjectPage/>,
+    element:<App/>,
     children:[
            {
                path:'/',

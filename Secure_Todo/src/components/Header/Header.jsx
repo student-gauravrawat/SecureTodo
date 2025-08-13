@@ -12,7 +12,7 @@ function Header() {
                   <Link to='/'
                    className=' ml-5' 
                   >
-                       <p className='text-[34px] font-semibold'>Secure ToDo</p>
+                       <p className='text-[34px] font-semibold'>Secure Notes</p>
                   </Link>
 
                   <ul className=' flex items-center justify-center gap-8 '>

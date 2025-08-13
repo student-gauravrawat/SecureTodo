@@ -7,10 +7,11 @@ function Button({
     font= 'font-semibold',
     w='w-[337px]',
     h='h-[50px]',
+    className,
     ...props }) {
   return (
     <div>
-       <button className={` ${w} ${h} ${bgColor} ${textColor} ${font} py-3 my-1 rounded-lg shadow-md hover:bg-blue-800 transition duration-300`}
+       <button className={` ${w} ${h} ${bgColor} ${textColor} ${className} ${font} py-3 my-1 rounded-lg shadow-md hover:bg-blue-800 transition duration-300`}
        {...props}
        >
                  {children} 
