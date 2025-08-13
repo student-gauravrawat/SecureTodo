@@ -1,12 +1,12 @@
 import React from 'react'
-import Header from './Header/Header'
-import TodoInput from './Todo/TodoInput'
+import { AllTodo, TodoInput, Header} from './index'
 
 function Home() {
   return (
     <div>
       <Header/>
       <TodoInput/>
+      <AllTodo/>
     </div>
   )
 }

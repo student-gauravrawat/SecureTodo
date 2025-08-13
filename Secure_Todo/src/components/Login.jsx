@@ -3,11 +3,13 @@ import{Container, Button, Input} from "./index"
 import SingUpPage from '../pages/SingUpPage'
 import {useForm} from "react-hook-form"
 import { login as storeLogin} from "../FireBase/auth"
-
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/todoSlice";
 import ProjectPage from '../pages/ProjectPage'
+import {getCurrentUser} from "../FireBase/auth"
 
 function Login() {
-
+ const dispatch = useDispatch()
 
   const{register, handleSubmit, reset}= useForm()
   const [showPage, setShowPage] = useState(false)
@@ -24,9 +26,15 @@ function Login() {
       try {
         await storeLogin(data)
         console.log("login successful")
+        const currentUser = await getCurrentUser(); // Firebase से user object
+        dispatch(setUser({
+                 uid: currentUser.uid,
+                 email: currentUser.email,
+                 displayName: currentUser.displayName || "",
+                 photoURL: currentUser.photoURL || ""
+              })); // Redux में user set
         setShowPage(true)
         
-
       } catch (error) {
         console.log("error is login", error.message)
         setError(true)

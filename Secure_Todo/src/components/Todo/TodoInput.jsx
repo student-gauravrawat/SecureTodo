@@ -2,18 +2,27 @@ import React from 'react'
 import {Button, Input} from "../index"
 import {useForm} from "react-hook-form"
 import {createPost} from "../../FireBase/service"
+import { serverTimestamp } from "firebase/firestore";
+import { useSelector } from "react-redux";
+
 
 function TodoInput() {
 
   const{register, handleSubmit, reset}= useForm()
+  const { user } = useSelector((state) => state.auth); // auth slice से user
 
   const submitNotes = async(data)=>{
      try {
         await createPost({
-          note: data.notes,
-          id: new Date()
-        })
+          notes: data.notes,
+          createdAt: serverTimestamp(),
+          createdBy: {
+               uid: user.uid,
+               email: user.email
+      }
+  })
         console.log(data)
+        console.log("Note added by:", user.email);
         reset()
      } catch (error) {
         console.log("error in create post" , error.message)

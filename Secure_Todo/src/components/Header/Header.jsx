@@ -9,36 +9,35 @@ function Header() {
     <header>
         <nav className=' my-10'>
              <div className='  flex justify-between '>
-                  <Link to='/'
+                  <div
                    className=' ml-5' 
                   >
                        <p className='text-[34px] font-semibold'>Secure Notes</p>
-                  </Link>
+                  </div>
 
                   <ul className=' flex items-center justify-center gap-8 '>
-                     <NavLink
-                      to='/'
-                      className={({isActive})=> `  font-medium  ${isActive? "text-xl text-red-400 font-bold  ": ""}`}
+                     <div
+                      className= '  font-medium  '
                      >
                          <li>All Todo</li>
-                     </NavLink>
+                     </div>
 
-                     <NavLink
-                       to='/completetodo'
-                       className={({isActive})=> ` font-medium  ${isActive? "text-xl text-red-400 font-bold": ""}`}
+                     <div
+                    
+                       className= 'font-medium'   
                      >
                       <li>Completed Todo</li>
-                     </NavLink>
+                     </div>
 
-                     <NavLink
-                       to='/uncompletetodo'
-                       className={({isActive})=> `  font-medium  ${isActive? "text-xl text-red-400 font-bold": ""}`} 
+                     <div
+                      
+                       className='font-medium'  
                     >
                          <li>Uncompleted Todo</li>
-                     </NavLink>
+                     </div>
                   </ul>
 
-
+                 
                   <LogOutBtn  className=' mr-5'>
                        Log Out
                   </LogOutBtn>
