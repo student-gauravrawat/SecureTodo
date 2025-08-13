@@ -2,18 +2,18 @@ import React from 'react'
 import {logout} from "../../FireBase/auth" 
 import { useDispatch } from "react-redux";
 import { clearUser } from "../../store/todoSlice";
-import { useNavigate } from 'react-router-dom';
+
 
 function LogOutBtn({className}) {
     
   const dispatch = useDispatch()
-
 
     const userLogOut = async()=>{
        try {
            const isDone = await logout();
             console.log("Logout successful");
             dispatch(clearUser())
+            localStorage.removeItem("user");
            
 
     } catch (error) {

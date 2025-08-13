@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import{Container, Button, Input} from "./index"
 import SingUpPage from '../pages/SingUpPage'
 import {useForm} from "react-hook-form"
-import { login as storeLogin} from "../FireBase/auth"
+import { login as storeLogin, getCurrentUser} from "../FireBase/auth"
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/todoSlice";
 import ProjectPage from '../pages/ProjectPage'
-import {getCurrentUser} from "../FireBase/auth"
+
 
 function Login() {
  const dispatch = useDispatch()
@@ -14,7 +14,6 @@ function Login() {
   const{register, handleSubmit, reset}= useForm()
   const [showPage, setShowPage] = useState(false)
   const[error, setError] = useState(false)
-  
   const[active, setActive] = useState("")
 
   if(active === 'singupPage'){
@@ -27,12 +26,14 @@ function Login() {
         await storeLogin(data)
         console.log("login successful")
         const currentUser = await getCurrentUser(); // Firebase से user object
-        dispatch(setUser({
-                 uid: currentUser.uid,
-                 email: currentUser.email,
-                 displayName: currentUser.displayName || "",
-                 photoURL: currentUser.photoURL || ""
-              })); // Redux में user set
+        const userData = {
+        uid: currentUser.uid,
+        email: currentUser.email,
+        displayName: currentUser.displayName || "",
+        photoURL: currentUser.photoURL || ""
+      };
+        dispatch(setUser(userData)); // Redux में user set
+        localStorage.setItem("user", JSON.stringify(userData));
         setShowPage(true)
         
       } catch (error) {

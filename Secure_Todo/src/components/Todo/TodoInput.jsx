@@ -21,8 +21,8 @@ function TodoInput() {
                email: user.email
       }
   })
-        console.log(data)
-        console.log("Note added by:", user.email);
+      //   console.log(data)
+      //   console.log("Note added by:", user.email)
         reset()
      } catch (error) {
         console.log("error in create post" , error.message)
