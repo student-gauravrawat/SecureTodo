@@ -5,7 +5,6 @@ function Home() {
   return (
     <div>
       <Header/>
-      <TodoInput/>
       <AllTodo/>
     </div>
   )

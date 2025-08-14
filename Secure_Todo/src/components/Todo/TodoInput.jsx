@@ -1,31 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Button, Input} from "../index"
 import {useForm} from "react-hook-form"
-import {createPost} from "../../FireBase/service"
+import {createPost, updatePost} from "../../FireBase/service"
 import { serverTimestamp } from "firebase/firestore";
 import { useSelector } from "react-redux";
 
 
-function TodoInput() {
+function TodoInput({editNote, clearEdit}) {
 
-  const{register, handleSubmit, reset}= useForm()
+  const{register, handleSubmit, reset, setValue}= useForm()
   const { user } = useSelector((state) => state.auth); // auth slice से user
+  const[editId, setEditId] = useState(null)
+
+  useEffect(()=>{
+    if(editNote){
+       setEditId(editNote.id)
+       setValue("notes", editNote.notes)
+    }
+  },[editNote, setValue])
 
   const submitNotes = async(data)=>{
      try {
+        if (editId) {
+        await updatePost(editId, {
+          notes: data.notes,
+          updatedAt: serverTimestamp(),
+        });
+        setEditId(null);
+        clearEdit();
+         
+      } else {
         await createPost({
           notes: data.notes,
           createdAt: serverTimestamp(),
           createdBy: {
-               uid: user.uid,
-               email: user.email
+            uid: user.uid,
+            email: user.email
+          }
+        });
       }
-  })
-      //   console.log(data)
-      //   console.log("Note added by:", user.email)
-        reset()
+      reset()
+      setTimeout(() => {
+             alert("Please, Refresh Your Account")
+         }, 1)
      } catch (error) {
-        console.log("error in create post" , error.message)
+        console.log("error in submit" , error.message)
      }
   }
 
@@ -44,7 +63,7 @@ function TodoInput() {
         }
        />
              <Button w='w-[80px]' h='h-[45px]' className='text-xl ml-5 mb-5 ' type='submit'>
-                Add
+                 {editId ? "Update" : "Add"}
              </Button>
           </div>
        </form>

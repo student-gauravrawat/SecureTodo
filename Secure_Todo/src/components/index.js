@@ -9,6 +9,8 @@ import UnCompletedTodo from "./Todo/UnCompletedTodo"
 import TodoInput from "./Todo/TodoInput";
 import Header from "./Header/Header";
 import Home from "./Home"
+import DeleteButton from "./Todo/DeleteButton";
+import EditButton from "./Todo/EditButton";
 
 import LogOutBtn from "./Header/LogOutBtn";
 
@@ -24,5 +26,7 @@ export {
   UnCompletedTodo,
   Header,
   Home,
-  LogOutBtn
+  LogOutBtn,
+  DeleteButton,
+  EditButton
 }
