@@ -5,16 +5,41 @@ import App from './App.jsx'
 import { Provider } from 'react-redux'
 import store from "./store/store.js"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { CompletedTodo, UnCompletedTodo, Login, Home} from "../src/components/index.js"
+import { CompletedTodo, UnCompletedTodo, AllTodo, Home} from "../src/components/index.js"
 import ProjectPage from './pages/ProjectPage.jsx'
 
 
-
+const router = createBrowserRouter([
+  {
+    path:'/',
+    element:<App/>,
+    children:[
+      {
+        path:'/',
+        element:<Home/>,
+        children:[
+          {
+            path:'/alltodo',
+            element:<AllTodo/>
+          },
+          {
+            path:'/completedtodo',
+            element:<CompletedTodo/>
+          },
+          {
+            path:'/uncompletedtodo',
+            element:<UnCompletedTodo/>
+          }
+        ]
+      }
+    ]
+  }
+])
 
 
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <App/>
+    <RouterProvider router={router} />
   </Provider>,
 )

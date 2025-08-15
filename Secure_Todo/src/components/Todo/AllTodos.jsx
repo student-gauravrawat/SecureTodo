@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { GetUserNotes } from './GetUserNotes';
 import {DeleteButton, EditButton, TodoInput} from "../index"
+import { updatePost } from "../../FireBase/service";
 
 function AllTodos() {
   const { user } = useSelector((state) => state.auth); // getting slice fron auth
@@ -40,6 +41,20 @@ const handleNoteDelete = (deletedId) => {
     setEditNote(null)
   }
 
+   // ✅ Completed toggle function
+  const toggleComplete = async (id, currentStatus) => {
+    try {
+      await updatePost(id, { completed: !currentStatus });
+      setNotes(prevNotes =>
+        prevNotes.map(note =>
+          note.id === id ? { ...note, completed: !currentStatus } : note
+        )
+      );
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
   return (
     <div className=' text-center   '>
      <TodoInput editNote={editNote} clearEdit={clearEdit} />
@@ -50,7 +65,15 @@ const handleNoteDelete = (deletedId) => {
                  <div key={note.id} className='flex items-center justify-between bg-white shadow-sm rounded-xl p-4 border border-gray-100 hover:shadow-md transition'>
 
                       <div className=' flex  items-center justify-between   w-full'>
-                            <p className=' text-gray-800 text-lg flex-1  '>{note.notes}</p>
+                             <input
+                               type="checkbox"
+                               checked={note.completed || false}
+                               onChange={() => toggleComplete(note.id, note.completed)}
+                               className="mr-3 w-5 h-5"
+                             />
+                            <p className={`text-gray-800 text-lg  flex-1 ${note.completed ? "line-through font-mono  text-xl" : ""}`}>
+                                   {note.notes}
+                            </p>
                             <div className='flex  space-x-3 ml-3'>
                               <EditButton note={note} onEdit={handleEditNote} />
                               <DeleteButton postId={note.id} onDelete={handleNoteDelete} />

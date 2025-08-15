@@ -3,6 +3,7 @@ import LogOutBtn from './LogOutBtn'
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+
 function Header() {
  const user = useSelector((state)=> state.auth.user)
 
@@ -14,28 +15,49 @@ function Header() {
                   <div
                    className=' ml-5' 
                   >
-                       <p className='text-[34px] font-semibold mt-[-13px]'>Secure Notes</p>
+                     <Link to='/'
+                        className='text-[34px] font-semibold mt-[-13px]'>Secure Notes</Link>
                   </div>
 
                   <ul className=' flex items-center justify-center gap-8 '>
                      <div
                       className= '  font-medium  '
                      >
-                         <li>All Notes</li>
+                         <li>
+                              <NavLink
+                              className={({isActive})=>` ${isActive?" text-xl text-red-500  border-b-5 rounded":""}`}
+                               to='/alltodo'
+                              >
+                                   All Notes
+                              </NavLink>
+                         </li>
                      </div>
 
                      <div
                     
                        className= 'font-medium'   
                      >
-                      <li>Completed Notes</li>
+                      <li>
+                          <NavLink
+                            className={({isActive})=>` ${isActive?" text-xl text-red-500  border-b-5 rounded":""}`}
+                            to='/completedtodo'
+                          >Completed Notes
+                          </NavLink>
+                      </li>
                      </div>
 
                      <div
                       
                        className='font-medium'  
                     >
-                         <li>Uncompleted Notes</li>
+                         <li>
+                              <NavLink
+                               className={({isActive})=>` ${isActive?" text-xl text-red-500  border-b-5 rounded":""}`}
+                               to='/uncompletedtodo'
+                              >
+                                    Uncompleted Notes
+                              </NavLink>
+                         </li>
                      </div>
                   </ul>
 

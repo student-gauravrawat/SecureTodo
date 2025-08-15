@@ -32,6 +32,7 @@ function TodoInput({editNote, clearEdit}) {
       } else {
         await createPost({
           notes: data.notes,
+          completed:false,
           createdAt: serverTimestamp(),
           createdBy: {
             uid: user.uid,

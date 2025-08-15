@@ -1,11 +1,12 @@
 import React from 'react'
-import { AllTodo, TodoInput, Header} from './index'
+import { Header} from './index'
+import { Outlet } from 'react-router-dom'
 
 function Home() {
   return (
     <div>
       <Header/>
-      <AllTodo/>
+      <Outlet/>
     </div>
   )
 }
