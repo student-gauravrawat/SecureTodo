@@ -15,8 +15,11 @@ function Header() {
                   <div
                    className=' ml-5' 
                   >
-                     <Link to='/'
-                        className='text-[34px] font-semibold mt-[-13px]'>Secure Notes</Link>
+                     <NavLink 
+                        to='/instruction'
+                        className={({isActive})=>`${isActive ? " text-[38px] font-bold":""} text-[34px] font-semibold mt-[-13px]`}
+                        >
+                        Secure Notes</NavLink>
                   </div>
 
                   <ul className=' flex items-center justify-center gap-8 '>

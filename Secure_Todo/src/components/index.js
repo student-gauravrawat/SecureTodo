@@ -11,7 +11,7 @@ import Header from "./Header/Header";
 import Home from "./Home"
 import DeleteButton from "./Todo/DeleteButton";
 import EditButton from "./Todo/EditButton";
-
+import NotesInstruction from "./NotesInstruction";
 import LogOutBtn from "./Header/LogOutBtn";
 
 export {
@@ -28,5 +28,6 @@ export {
   Home,
   LogOutBtn,
   DeleteButton,
-  EditButton
+  EditButton,
+  NotesInstruction
 }

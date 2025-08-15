@@ -21,7 +21,7 @@ function AllTodos() {
   }, [user]);
 
   useEffect(() => {
-      if (notes.length > 0) {
+      if (notes.length >= 0) {
         const timer = setTimeout(() => {
         setWait("");
        }, 2000); // message will delete after 1 second
@@ -89,7 +89,7 @@ const handleNoteDelete = (deletedId) => {
          ( 
           <div className=' text-2xl '>
              <p className=' text-[50px] text-black font-mono'>
-                {wait || <span className="text-red-600">Sorry No Notes....</span>}
+                {wait || <span className="text-blue-600">Please Add Notes....</span>}
              </p>
              
           </div>

@@ -22,7 +22,8 @@ function CompletedTodo() {
   }, [user]);
 
   useEffect(() => {
-      if (notes.length > 0) {
+    
+      if (notes.length >= 0 ) {
         const timer = setTimeout(() => {
         setWait("");
        }, 2000); // message will delete after 1 second
@@ -56,14 +57,15 @@ const handleNoteDelete = (deletedId) => {
     }
   };
 
+ const completedNotes = notes.filter(note => note.completed === true);
+
   return (
     <div className=' text-center   '>
      <TodoInput editNote={editNote} clearEdit={clearEdit} />
-        {notes.length > 0 ? (
+        {completedNotes.length > 0 ? (
               
              <div className="space-y-4 max-w-3xl mx-auto mt-8">
-                { notes.filter(note => note.completed === true)
-                .map((note)=>(
+                { completedNotes.map((note)=>(
                  <div key={note.id} className='flex items-center justify-between bg-white shadow-sm rounded-xl p-4 border border-gray-100 hover:shadow-md transition'>
 
                       <div className=' flex  items-center justify-between   w-full'>

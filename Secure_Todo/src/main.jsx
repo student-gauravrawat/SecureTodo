@@ -5,8 +5,8 @@ import App from './App.jsx'
 import { Provider } from 'react-redux'
 import store from "./store/store.js"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { CompletedTodo, UnCompletedTodo, AllTodo, Home} from "../src/components/index.js"
-import ProjectPage from './pages/ProjectPage.jsx'
+import { CompletedTodo, UnCompletedTodo, AllTodo, Home, NotesInstruction} from "../src/components/index.js"
+
 
 
 const router = createBrowserRouter([
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
         path:'/',
         element:<Home/>,
         children:[
+          {
+            path:'/instruction',
+            element:<NotesInstruction/>
+          },
           {
             path:'/alltodo',
             element:<AllTodo/>
