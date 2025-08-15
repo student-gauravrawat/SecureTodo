@@ -1,6 +1,7 @@
 # SecureTodo
-In this application, we can login and sing up and we can store and secure our data
-
-## 1. First, I am creating welcome page
-## 2. Second, I will create login & sing up option landing page
-## 3. Third, I created auth and services file with firebase  
+## 1. In this application, we can login and sing up.
+## 2  In this, You can store your private notes secretly.
+## 3. You can edit your notes.
+## 4. You can delete your notes.
+## 5. You can see seprate list of completed notes.
+## 6. You can see seprate list of uncompleted notes.
