@@ -19,6 +19,10 @@ const router = createBrowserRouter([
         element:<Home/>,
         children:[
           {
+            index: true,
+            element:<AllTodo/>
+          },
+          {
             path:'/instruction',
             element:<NotesInstruction/>
           },
