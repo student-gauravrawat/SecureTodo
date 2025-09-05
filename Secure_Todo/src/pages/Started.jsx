@@ -29,7 +29,7 @@ function Started() {
                 <button 
                    className=" bg-blue-700 text-white font-semibold py-2 rounded-lg shadow-md hover:bg-blue-800 transition duration-300 w-[345px] h-[50px]"
                 onClick={()=> setActivePage('singup')}
-                >     Sing up
+                >     Sign up
                 </button>
              </div>
 

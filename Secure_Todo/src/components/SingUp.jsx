@@ -60,7 +60,7 @@ const singup = async(data)=>{
                            }
                         />
                         <Button type="submit">
-                            Sing Up
+                            Sign Up
                         </Button>
                     </div>
                </form>
